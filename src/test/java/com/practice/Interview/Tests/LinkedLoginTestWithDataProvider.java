@@ -1,4 +1,4 @@
-package com.practice.Interview.Tests;
+package com.practice.Interview.tests;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,10 +10,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.practice.Interview.Constants.Urls;
-import com.practice.Interview.Helper.TestBase;
-import com.practice.Interview.Pages.LinkedInLoginPage;
+import com.practice.Interview.constants.Urls;
 import com.practice.Interview.data.LoginDataProvider;
+import com.practice.Interview.helper.TestBase;
+import com.practice.Interview.pages.LinkedInLoginPage;
 
 import okhttp3.internal.platform.ConscryptPlatform;
 
@@ -22,7 +22,7 @@ public class LinkedLoginTestWithDataProvider extends TestBase {
 
 	@BeforeMethod
 	private void beforeMethod() {
-		driver = getDriver();
+		driver = startBrowser();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -41,8 +41,6 @@ public class LinkedLoginTestWithDataProvider extends TestBase {
 		driver.get(Urls.loginUrl);
 		linkedInLoginPage.username.sendKeys(username);
 		linkedInLoginPage.passwrod.sendKeys(password);
-
-//		Thread.sleep(10000);
 	}
 
 	@AfterMethod

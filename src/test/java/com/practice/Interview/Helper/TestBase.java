@@ -1,11 +1,13 @@
-package com.practice.Interview.Helper;
+package com.practice.Interview.helper;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.BeforeMethod;
 import com.practice.Interview.util.ConfigUtil;
@@ -17,16 +19,18 @@ public class TestBase {
 	
 	@Parameters({"browser", "env"})
 	@BeforeMethod
-	public void beforeTest(String browserNew, String env)	{
-		System.out.println("Setup : BrowserName : " + browserNew + "Environment : " + env);
+	public void beforeTest(@Optional("firefox")String browser, @Optional("Production")String env)	{
+		System.out.println("Setup : BrowserName : " + browser + "Environment : " + env);
 		ConfigUtil configUtil = new ConfigUtil();
-		Properties properties = configUtil.setProperties();
-		browser = properties.getProperty("browser");
+		
+		Properties properties = configUtil.setProperties(env);
+		TestBase.browser =  browser.equals("unknown") ? properties.getProperty("browser") : browser;
+		
+		System.out.println("Browser name = " + browser);
 		baseUrl = properties.getProperty("baseUrl");
-		getDriver();
 	}
 
-	public WebDriver getDriver()	{
+	public WebDriver startBrowser()	{
 		switch(browser.toLowerCase()) {
 		case "chrome" : 
 			System.setProperty("webdriver.chrome.driver","C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
@@ -36,6 +40,10 @@ public class TestBase {
 			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\geckodriver.exe");
 			driver = new FirefoxDriver();
 			break;
+		case "ie":
+			System.setProperty("webdriver.ie.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\IEDriverServer.exe");
+
+			driver = new InternetExplorerDriver();
 		default :
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
 			driver = new ChromeDriver();

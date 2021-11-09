@@ -1,4 +1,4 @@
-package com.practice.Interview.Tests;
+package com.practice.Interview.tests;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -8,14 +8,14 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import com.practice.Interview.Constants.Urls;
-import com.practice.Interview.Helper.LoginHelper;
-import com.practice.Interview.Helper.TestBase;
-import com.practice.Interview.Pages.LinkedInLoginPage;
+
+import com.practice.Interview.constants.Urls;
+import com.practice.Interview.helper.LoginHelper;
+import com.practice.Interview.helper.TestBase;
+import com.practice.Interview.pages.LinkedInLoginPage;
 
 public class TestngParameterTest extends TestBase {
 	
-	@Parameters({"browser", "env"})
 	@Test
 	private void testLinkedInWithWrongPassword(String browser, String env)  {
 		System.out.println("Browser = " + browser + "Environment = " + env);

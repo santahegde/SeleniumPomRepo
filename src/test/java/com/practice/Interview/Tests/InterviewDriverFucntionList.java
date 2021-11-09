@@ -1,4 +1,4 @@
-package com.practice.Interview.Tests;
+package com.practice.Interview.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Alert;
@@ -13,19 +13,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.practice.Interview.Constants.Urls;
-import com.practice.Interview.Helper.TestBase;
-import com.practice.Interview.Pages.LinkedInLoginPage;
 
-public class OtherDriverFucntion extends TestBase {
+import com.practice.Interview.constants.Urls;
+import com.practice.Interview.helper.TestBase;
+import com.practice.Interview.pages.LinkedInLoginPage;
+
+public class InterviewDriverFucntionList extends TestBase {
 	WebDriver driver;
 	
 	@BeforeMethod
 	private void beforeMethod() {
-		driver = getDriver();
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		driver = startBrowser();
 	}
 	
 	@Test

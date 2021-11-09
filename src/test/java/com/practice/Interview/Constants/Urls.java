@@ -1,6 +1,6 @@
-package com.practice.Interview.Constants;
+package com.practice.Interview.constants;
 
-import com.practice.Interview.Helper.TestBase;
+import com.practice.Interview.helper.TestBase;
 
 public class Urls extends TestBase {
 	public final static String  loginUrl = baseUrl + "/login";

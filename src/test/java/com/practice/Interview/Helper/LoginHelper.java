@@ -1,4 +1,4 @@
-package com.practice.Interview.Helper;
+package com.practice.Interview.helper;
 
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,8 +6,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.practice.Interview.Constants.Urls;
-import com.practice.Interview.Pages.LinkedInLoginPage;
+import com.practice.Interview.constants.Urls;
+import com.practice.Interview.pages.LinkedInLoginPage;
 
 public class LoginHelper extends TestBase {
 

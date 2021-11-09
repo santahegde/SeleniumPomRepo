@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class ToDoResizeTest extends BaseTest {
+public class ResizeBrowserWithDimension extends BaseTest {
 	
 	 @Test	
 	    public void launchBrowserTest() throws InterruptedException {

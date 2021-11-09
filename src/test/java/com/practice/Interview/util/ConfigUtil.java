@@ -6,15 +6,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigUtil {
-	
-	public Properties setProperties() {
+
+	public Properties setProperties(String env) {
 		Properties properties = new Properties();
 		try {
-
+			env.toLowerCase();
 			FileInputStream fileDir = new FileInputStream(System.getProperty("user.dir")
-					+ "\\src\\test\\java\\com\\practice\\Interview\\qa\\config\\config.properties");
+					+ "\\src\\test\\java\\com\\practice\\Interview\\"+env+"\\config\\config.properties");
 			System.out.println("Path of th directory" + System.getProperty("user.dir")
-					+ "\\src\\test\\java\\com\\practice\\Interview\\qa\\config\\config.properties");
+					+ "\\src\\test\\java\\com\\practice\\Interview\\" + env + "\\config\\config.properties");
 			properties.load(fileDir);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -24,6 +24,6 @@ public class ConfigUtil {
 		}
 		return properties;
 	}
-	
+
 	// Configure Environment URLs in WebDriverIO
 }

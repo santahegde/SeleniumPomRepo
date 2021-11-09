@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
-public class ToDOPirorityExperimentTest {
+public class PirorityExperimentTest {
 	
 	@BeforeClass
 	private void beforeClass()	{
@@ -13,19 +13,25 @@ public class ToDOPirorityExperimentTest {
 	}
 	
 	@Test(priority=0)
-	private void priority1Test()	{
+	private void priorityZeroTest()	{
 		System.out.println("Zero'th priority test getting executed");
 
 	}
 	
 	@Test(priority=-1)
-	private void priority0Test()	{
+	private void priorityNegativeOneTest()	{
 		System.out.println("-1 priority test getting executed");
 		new SoftAssert().assertAll();
 	}
 	
+	@Test(priority=1)
+	private void priorityPositiveOneTest()	{
+		System.out.println("1 priority test getting executed");
+		new SoftAssert().assertAll();
+	}
+	
 	@Test(priority=-2)
-	private void priorityNegative2Test()	{
+	private void priorityNegativeNegativeTwoTest()	{
 		System.out.println("-2 priority test getting executed");
 		new SoftAssert().assertAll();
 	}

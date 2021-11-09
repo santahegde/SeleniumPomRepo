@@ -7,6 +7,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;	
 
@@ -18,9 +21,7 @@ public class ToDoJavaScriptExecutorTest {
 				"C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-	}
+		driver.manage().deleteAllCookies();	}
 	
 	@Test
 	private void executeJavaScript()	{
@@ -38,9 +39,10 @@ public class ToDoJavaScriptExecutorTest {
         //Perform Click on LOGIN button using JavascriptExecutor		
         js.executeScript("arguments[0].click();", button);
                                 
-        //To generate Alert window using JavascriptExecutor. Display the alert message 			
-        js.executeScript("alert('Welcome to Guru99');"); 
-        
+        //To generate Alert window using JavascriptExecutor. Display the alert message 		
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.alertIsPresent());
+//        js.executeScript("alert('Welcome to Guru99');"); 
 //        executeAsyncScript
 //        With Asynchronous script, your page renders more quickly.
 //        Instead of forcing users to wait for a script to download before the page renders. 
@@ -53,6 +55,11 @@ public class ToDoJavaScriptExecutorTest {
 //        The script used in this method runs in the body of an anonymous function (a function without a name).
 //        We can also pass complicated arguments to it.
 
+	}
+	
+	@AfterMethod
+	private void afterMethod()	{
+		driver.quit();
 	}
 	
 
