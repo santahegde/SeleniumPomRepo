@@ -43,8 +43,6 @@ public class JavaScriptExecutorTest {
         //Perform Click on LOGIN button using JavascriptExecutor		
         js.executeScript("arguments[0].click();", button);
                                 
-        //To generate Alert window using JavascriptExecutor. Display the alert message 			
-        js.executeScript("alert('Welcome to Guru99');"); 
         WebDriverWait wait = new WebDriverWait(driver, 1000);
         wait.until(ExpectedConditions.alertIsPresent());
         new AlertHelper().accepttJsAlert(driver);
