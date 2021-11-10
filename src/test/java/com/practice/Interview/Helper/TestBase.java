@@ -2,15 +2,18 @@ package com.practice.Interview.helper;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.BeforeMethod;
+
 import com.practice.Interview.util.ConfigUtil;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 	public static String browser = "Firefox";
@@ -33,16 +36,18 @@ public class TestBase {
 	public WebDriver startBrowser()	{
 		switch(browser.toLowerCase()) {
 		case "chrome" : 
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
+//			System.setProperty("webdriver.chrome.driver","C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			break;
 		case "firefox" :
-			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\geckodriver.exe");
+//			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
 		case "ie":
-			System.setProperty("webdriver.ie.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\IEDriverServer.exe");
-
+//			System.setProperty("webdriver.ie.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\IEDriverServer.exe");
+			WebDriverManager.iedriver().setup();
 			driver = new InternetExplorerDriver();
 		default :
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");

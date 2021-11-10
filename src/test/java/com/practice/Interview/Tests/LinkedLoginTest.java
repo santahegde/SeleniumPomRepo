@@ -16,6 +16,7 @@ import com.practice.Interview.pages.LinkedInLoginPage;
 public class LinkedLoginTest extends TestBase {
 	@Test
 	private void testLinkedInWithWrongPassword()  {
+		driver = startBrowser();
 		LoginHelper loginHelper = new LoginHelper();
 		loginHelper.loginWithUserNameAndPassword();
 		driver.navigate ().refresh ();

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Browser Stack Sample Suite" thread-count="3" parallel="tests" verbose="3">
+
+	<test name="Browser Stack Tests FF">
+		<parameter name="os" value="Windows" />
+		<parameter name="os_Version" value="10" />
+		<parameter name="browser" value="Firefox" />
+		<parameter name="browser_version" value="80.0" />
+		<parameter name="env" value="Production" />
+		<classes>
+			<class name="com.practice.Interview.tests.RemoteWebDriverFirstTest" />
+		</classes>
+	</test>
+	
+	<test name="Browser Stack Tests Chrome">
+		<parameter name="os" value="Windows" />
+		<parameter name="os_Version" value="10" />
+		<parameter name="browser" value="Chrome" />
+		<parameter name="browser_version" value="80.0" />
+		<parameter name="env" value="Production" />
+		<classes>
+			<class name="com.practice.Interview.tests.RemoteWebDriverFirstTest" />
+		</classes>
+	</test>
+	
+	<!-- ******************Mac Setup for execution of scripts****************  -->
+	
+	<test name="Browser Stack Mac Tests Chrome">
+		<parameter name="os" value="OS X" />
+		<parameter name="os_Version" value="Catalina" />
+		<parameter name="browser" value="Chrome" />
+		<parameter name="browser_version" value="85.0" />
+		<parameter name="env" value="Production" />
+		<classes>
+			<class name="com.practice.Interview.tests.RemoteWebDriverFirstTest" />
+		</classes>
+	</test>
+</suite>
