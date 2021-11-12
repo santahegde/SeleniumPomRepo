@@ -1,25 +1,10 @@
 package com.practice.Interview.tests;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import com.practice.Interview.constants.Urls;
-import com.practice.Interview.helper.LoginHelper;
 import com.practice.Interview.helper.TestBase;
-import com.practice.Interview.pages.LinkedInLoginPage;
 
 public class WebTableTest extends TestBase {
 
