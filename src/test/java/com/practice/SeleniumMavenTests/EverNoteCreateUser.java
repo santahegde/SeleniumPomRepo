@@ -25,7 +25,7 @@ public class EverNoteCreateUser {
 		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
 	}
 
-	@Test
+	@Test(enabled=false)
 	@Deprecated
 	private void freeSignUp() throws InterruptedException	{
 		driver.get("https://www.evernote.com/Login.action");

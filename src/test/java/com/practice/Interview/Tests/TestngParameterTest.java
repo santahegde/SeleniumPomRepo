@@ -63,8 +63,4 @@ public class TestngParameterTest extends TestBase {
 //		loginPage.username.sendKeys("santalogicworked");
 //	}
 
-	@AfterMethod
-	private void afterMethod() {
-		driver.quit();
-	}
 }

@@ -1,30 +1,25 @@
 package com.practice.Interview.tests;
 
-import java.util.Iterator;
-import java.util.Set;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
-import com.practice.Interview.constants.Urls;
 import com.practice.Interview.helper.LoginHelper;
 import com.practice.Interview.helper.TestBase;
-import com.practice.Interview.pages.LinkedInLoginPage;
 
 public class LinkedLoginTest extends TestBase {
-	@Test
+	@Test(groups= {"Login", "Sessions", "AssociatedIdentity", "Challenge"})
 	private void testLinkedInWithWrongPassword()  {
+		System.out.println("********Starting Test**************");
 		driver = startBrowser();
 		LoginHelper loginHelper = new LoginHelper();
 		loginHelper.loginWithUserNameAndPassword();
 		driver.navigate ().refresh ();
 		Assert.assertEquals(driver.getTitle(), "LinkedIn Login, Sign in | LinkedIn");
 	}
-
-	@AfterMethod
-	private void afterMethod() {
-		driver.quit();
+	
+	@Test(groups= {"Login", "Sessions", "AssociatedIdentity", "Challenge"})
+	private void testLogin()	{
+		driver= startBrowser();
+		Assert.assertEquals(1, 1);
 	}
 }

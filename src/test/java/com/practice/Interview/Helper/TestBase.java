@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -21,8 +22,9 @@ public class TestBase {
 	public static String baseUrl;
 	
 	@Parameters({"browser", "env"})
-	@BeforeMethod
-	public void beforeTest(@Optional("firefox")String browser, @Optional("Production")String env)	{
+	@BeforeMethod(groups= {"Login"})
+	public void beforeTest(@Optional("Chrome")String browser, @Optional("Production")String env)	{
+		System.out.println("********Browser " + browser + "********** Enviornment" + env);
 		System.out.println("Setup : BrowserName : " + browser + "Environment : " + env);
 		ConfigUtil configUtil = new ConfigUtil();
 		
@@ -36,8 +38,8 @@ public class TestBase {
 	public WebDriver startBrowser()	{
 		switch(browser.toLowerCase()) {
 		case "chrome" : 
-//			System.setProperty("webdriver.chrome.driver","C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
-			WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\Pallavi\\Desktop\\Java\\Selenium\\Drivers\\chromedriver.exe");
+//			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			break;
 		case "firefox" :
@@ -58,4 +60,9 @@ public class TestBase {
 		driver.manage().window().maximize();
 		return driver;
 	}	
+	
+	@AfterMethod(groups= {"Login"})
+	public void afterMethod() {
+		driver.quit();
+	}
 }

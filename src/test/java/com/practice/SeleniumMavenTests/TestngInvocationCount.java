@@ -5,21 +5,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestngInvocationCount extends BaseTest {
-	WebDriver driver;
-	
-	@BeforeMethod
-	private void beforeMethod()	{
-		driver = getWebDriver();	
+public class TestngInvocationCount {
+
+	@Test(invocationCount = 2)
+	private void testRadioButton() throws InterruptedException {
+		System.out.println("Testng-InvocationCount : Radio button test is getting executed");
 	}
 
-	@Test(invocationCount=3)
-	private void testRadioButton() throws InterruptedException	{
-		driver.get("http://demo.guru99.com/test/radio.html");
-	}	
-	
-	@AfterMethod
-	private void afterMethod()	{
-		driver.quit();
-	}
 }

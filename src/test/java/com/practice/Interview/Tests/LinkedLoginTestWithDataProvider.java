@@ -43,8 +43,4 @@ public class LinkedLoginTestWithDataProvider extends TestBase {
 		linkedInLoginPage.passwrod.sendKeys(password);
 	}
 
-	@AfterMethod
-	private void afterMethod() {
-		driver.quit();
-	}
 }
