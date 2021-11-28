@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -22,7 +23,7 @@ public class TestBase {
 	public static String baseUrl;
 	
 	@Parameters({"browser", "env"})
-	@BeforeMethod(groups= {"Login"})
+	@BeforeSuite
 	public void beforeTest(@Optional("Chrome")String browser, @Optional("Production")String env)	{
 		System.out.println("********Browser " + browser + "********** Enviornment" + env);
 		System.out.println("Setup : BrowserName : " + browser + "Environment : " + env);
@@ -61,7 +62,7 @@ public class TestBase {
 		return driver;
 	}	
 	
-	@AfterMethod(groups= {"Login"})
+	@AfterMethod
 	public void afterMethod() {
 		driver.quit();
 	}

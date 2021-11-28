@@ -1,4 +1,4 @@
-package com.practice.Interview.tests.actions;
+package com.practice.Interview.Tests.actions;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.interactions.Actions;

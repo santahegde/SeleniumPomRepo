@@ -1,4 +1,4 @@
-package com.practice.Interview.tests;
+package com.practice.Interview.Tests;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

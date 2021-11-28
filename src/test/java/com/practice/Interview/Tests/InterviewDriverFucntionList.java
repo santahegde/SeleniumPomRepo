@@ -1,4 +1,4 @@
-package com.practice.Interview.tests;
+package com.practice.Interview.Tests;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Alert;
@@ -20,17 +20,17 @@ import com.practice.Interview.pages.LinkedInLoginPage;
 
 public class InterviewDriverFucntionList extends TestBase {
 	WebDriver driver;
-	
+
 	@BeforeMethod
 	private void beforeMethod() {
 		driver = startBrowser();
 	}
-	
+
 	@Test
-	public void testLinkedInWithWrongPassword()  {
+	public void testLinkedInWithWrongPassword() {
 		LinkedInLoginPage linkedInLoginPage = new LinkedInLoginPage();
 		driver.get(Urls.loginUrl);
-		driver.navigate().refresh ();
+		driver.navigate().refresh();
 //		linkedInLoginPage.username.sendKeys("heggar@yahoo.com");
 //		
 //		manageTimeOutMethods();
@@ -66,18 +66,19 @@ public class InterviewDriverFucntionList extends TestBase {
 		// Write a code to deal with ajax popup
 		// Wirte a code to deal with WebTable
 		// Wite a code to read data from excel
-		// 
-		
+		//
+
 		// Dropdown selection
 		// Priority, Testng Execution
-		
-		//Key down is not working in firefox check what is Robot Framework and if it helps here.
-		
+
+		// Key down is not working in firefox check what is Robot Framework and if it
+		// helps here.
+
 	}
-	
+
 	// Implicit, Explicit and WebDriverWait
-	private void manageTimeOutMethods()	{
-		// TimeUnit can NANO, MICRO, MILLI SECCONDS to SECONDS, MINUTES, HOURS, DAYS 
+	private void manageTimeOutMethods() {
+		// TimeUnit can NANO, MICRO, MILLI SECCONDS to SECONDS, MINUTES, HOURS, DAYS
 		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -88,9 +89,9 @@ public class InterviewDriverFucntionList extends TestBase {
 		wait.until(ExpectedConditions.elementToBeClickable(loginPage.forgotPasswordLink));
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
-	
+
 	// Driver manage cookies methods
-	private void manageCookieMethods()	{
+	private void manageCookieMethods() {
 		Cookie cookie = new Cookie("lix", "new.experiment=enabled");
 		driver.manage().deleteAllCookies();
 		driver.manage().deleteCookie(cookie);
@@ -99,21 +100,23 @@ public class InterviewDriverFucntionList extends TestBase {
 		driver.manage().getCookieNamed("lix");
 		driver.manage().getCookies();
 	}
-	
-	private void switcthToMethods()	{
+
+	private void switcthToMethods() {
 		String windoHandle = "handle", iframeNameOrId = "nameOrId";
 		WebElement frameElement = driver.findElement(By.id("222"));
 		WebDriverWait wait = new WebDriverWait(driver, 5);
-		// Switch to frame By element, id or Name as String, index and switching to parentFramew
+		// Switch to frame By element, id or Name as String, index and switching to
+		// parentFramew
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
 		driver.switchTo().frame(frameElement);
 		driver.switchTo().frame(iframeNameOrId);
 		driver.switchTo().frame(1);
-		driver.switchTo().parentFrame(); 
-		// When you have nested iframes webpagebody > { mainFrame { parentFrame{ childFrame}}}
+		driver.switchTo().parentFrame();
+		// When you have nested iframes webpagebody > { mainFrame { parentFrame{
+		// childFrame}}}
 		// If you are in child frame switcTo parentFame will set control to mainFrame.
 		driver.switchTo().defaultContent(); // Get control back to the default content of the page
-		
+
 		// Switching to alert
 		wait.until(ExpectedConditions.alertIsPresent());
 		Alert alert = driver.switchTo().alert();
@@ -121,45 +124,46 @@ public class InterviewDriverFucntionList extends TestBase {
 		alert.accept();
 		alert.dismiss();
 		alert.sendKeys("hello");
-		
+
 		// Switchto window
 		driver.switchTo().window("handle");
 	}
-	
-	//***************************Action class begin here
-	private void keyUpAndDown()	{
+
+	// ***************************Action class begin here
+	private void keyUpAndDown() {
 		Actions actions = new Actions(driver);
 		actions.keyDown(Keys.CONTROL).keyUp(Keys.CONTROL).perform();
-		actions.moveByOffset(30, 30).perform();; // Check how will define cordinates
+		actions.moveByOffset(30, 30).perform();
+		; // Check how will define cordinates
 	}
-	
+
 	private void mouseAction(WebElement source, WebElement target) {
 		Actions actions = new Actions(driver);
 		// Mouse Hover Action in Selenium
-		actions.moveToElement(source).perform(); 
+		actions.moveToElement(source).perform();
 
 		// Dragging and dropping element from source to target
 		actions.dragAndDrop(source, target).perform();
 		actions.clickAndHold(source).moveToElement(target).release().perform();
-		
+
 		// All click actions
 		actions.click(source); // click
-		
+
 		// Doouble click and Rightclick
 		actions.doubleClick(source).perform();
 		actions.moveToElement(source).doubleClick().perform();
-		
+
 		// Right click
 		actions.contextClick(source).perform();
 		actions.moveToElement(source).contextClick().perform();
 	}
-	
-	private void javaScriptExecute()	{
+
+	private void javaScriptExecute() {
 		LinkedInLoginPage loginPage = new LinkedInLoginPage();
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor)driver;
+		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 		javascriptExecutor.executeAsyncScript("argument[0].click", loginPage.forgotPasswordLink);
 //		js.executeScript("alert('Welcome to Guru99');"); 
 //		// Above commented code will produce alert on some unsecured site dont try on LinkedIn
 	}
-	
+
 }
